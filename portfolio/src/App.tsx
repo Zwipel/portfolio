@@ -1,27 +1,50 @@
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Experiences } from "./pages/Experiences";
-import { Projects } from "./pages/Projects";
+import React, { useState } from "react";
+import Footer from "./components/Footer";
 import { Contact } from "./pages/Contact";
+import { Experiences } from "./pages/Experiences";
+import { Home } from "./pages/Home";
+import { Projects } from "./pages/Projects";
+import { Navbar } from "./components/Navbar";
+import { useLanguage } from "./function/Language";
+import { useThemeMode } from "./function/Theme"; 
+import { LanguageType } from "./types/languageTypes";
+
+type Tab = "home" | "projects" | "experiences" | "contact";
 
 export const App = () => {
-  return (
-    <div>
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/projects">Projects</Link> |
-        <Link to="/experiences">Experiences</Link> |
-        <Link to="/contact">Contact</Link>
-      </nav>
+  const [tab, setTab] = useState<Tab>("home");
+  const { t } = useLanguage();
+  const [language, setLanguage] = useState<LanguageType>("de");
+  const { mode, toggleTheme } = useThemeMode();
 
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/experiences" element={<Experiences />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
+  const renderTab = () => {
+    switch (tab) {
+      case "projects":
+        return <Projects />;
+      case "experiences":
+        return <Experiences />;
+      case "contact":
+        return <Contact />;
+      default:
+        return <Home />;
+    }
+  };
+
+  return (
+    <div style={{ padding: 20, fontFamily: "system-ui, sans-serif" }}>
+      <Navbar
+        onToggleThemeAction={toggleTheme}
+        mode={mode}
+        language={language}
+        onToggleLanguageAction={() => setLanguage(language === "en" ? "de" : "en")}
+        t={t}
+        onNavigate={(s: Tab) => setTab(s)}
+        active={tab}
+      />
+      <main style={{marginTop: 20}}>{renderTab()}</main>
+      <div style={{ marginTop: 2 }}>
+        <Footer />
+      </div>
     </div>
   );
 };

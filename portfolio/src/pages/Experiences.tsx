@@ -6,7 +6,7 @@ import {
   ListItemText,
   Divider,
 } from "@mui/material";
-import React from "react"; 
+import React from "react";
 import { useLanguage } from "../function/Language";
 
 type Experience = {
@@ -16,7 +16,7 @@ type Experience = {
   bullets: string;
 };
 
-export const Experiences = () =>  {
+export const Experiences = () => {
   const { t } = useLanguage();
   const experiences: Experience[] = [
     {
@@ -65,4 +65,4 @@ export const Experiences = () =>  {
       </List>
     </Box>
   );
-}
+};

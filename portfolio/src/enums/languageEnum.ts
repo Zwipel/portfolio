@@ -1,12 +1,11 @@
 import { LanguageType } from "../types/languageTypes";
 
- 
 export const languageEnum: Record<LanguageType, LanguageType> = {
   en: "en",
   de: "de",
 };
 
-export const translations = {
+export const translations: Record<LanguageType, Record<string, string>> = {
   en: {
     title1:
       "Computer Science Expert Subject Area: Software Development in training",
@@ -30,9 +29,11 @@ export const translations = {
     sendingMessage: "Sending message ...",
     messageSend: "Send Message",
     welcome: "Hello, I'm Dennis Butenko",
-    projects: "Projexts",
+    projects: "Projects",
     summary:
       "As a software developer, I combine clean, scalable code with a clear focus on user-friendliness – for applications that not only work but also inspire.",
+    theme: "Theme",
+    language: "Language",
   },
   de: {
     title1: "Fachinformatiker Anwendungsentwicklung in Ausbildung",
@@ -59,5 +60,7 @@ export const translations = {
     projects: "Projekte",
     summary:
       "Als Softwareentwickler verbinde ich sauberen, skalierbaren Code mit einem klaren Fokus auf Nutzerfreundlichkeit – für Anwendungen, die nicht nur funktionieren, sondern begeistern.",
+    theme: "Thema",
+    language: "Sprache",
   },
 };

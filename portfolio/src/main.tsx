@@ -1,13 +1,16 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; 
-import './styles.css'; 
-import { App } from './App';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { LanguageProvider } from "./function/Language";
+import { CustomThemeProvider } from "./function/Theme";
+import { App } from "./App";
+import "./styles.css";
 
-createRoot(document.getElementById('root') as HTMLElement).render(
+createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter basename={process.env.BASE_URL || '/'}>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode> 
+    <CustomThemeProvider>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </CustomThemeProvider>
+  </React.StrictMode>
 );

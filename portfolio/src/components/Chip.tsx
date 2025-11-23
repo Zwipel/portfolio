@@ -1,5 +1,4 @@
-import { Chip, ChipProps } from "@mui/material"; 
- 
+import { Chip, ChipProps } from "@mui/material";
 
 export const CustomChip = ({ label, ...props }: ChipProps) => {
   return (

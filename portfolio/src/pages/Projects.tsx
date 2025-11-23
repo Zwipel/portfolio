@@ -1,8 +1,9 @@
 import { RocketLaunch } from "@mui/icons-material";
 import { Grid, Box, Stack, Card, CardContent, CardMedia } from "@mui/material";
-import React from "react";  
+import React from "react";
 import { MultiChip } from "../components/MultilineChip";
 import { useLanguage } from "../function/Language";
+
 export const Projects = () => {
   const { t } = useLanguage();
 
@@ -52,5 +53,4 @@ export const Projects = () => {
       </Grid>
     </Grid>
   );
-}; 
-
+};

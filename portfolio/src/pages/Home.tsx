@@ -1,8 +1,7 @@
-import { Box, Paper, Stack, Avatar, Typography } from '@mui/material';
-import React from 'react';
-import { CustomChip } from '../components/Chip';
-import { useLanguage } from '../function/Language';
- 
+import { Box, Paper, Stack, Avatar, Typography } from "@mui/material";
+import React from "react";
+import { CustomChip } from "../components/Chip";
+import { useLanguage } from "../function/Language";
 
 export const Home = () => {
   const { t } = useLanguage();
@@ -23,7 +22,7 @@ export const Home = () => {
               <CustomChip label="TypeScript" />
               <CustomChip label="C#" />
               <CustomChip label="SQL" />
-              <CustomChip label="Python" /> 
+              <CustomChip label="Python" />
               <CustomChip label="Microsoft D365" />
             </Stack>
           </Box>
@@ -35,4 +34,4 @@ export const Home = () => {
       </Paper>
     </Box>
   );
-} 
+};
