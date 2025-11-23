@@ -29,15 +29,15 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: my-portfolio
+        working-directory: .
 
       - name: Build Next.js
         run: npm run build
-        working-directory: my-portfolio
+        working-directory: .
 
       - name: Export static site
         run: npm run export
-        working-directory: my-portfolio
+        working-directory: .
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
