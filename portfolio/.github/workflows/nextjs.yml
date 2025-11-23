@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,23 +30,22 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
-        working-directory: .        # <-- change to the folder that contains package.json
 
       - name: Build Next.js
         run: npm run build
-        working-directory: .        # <-- change to the folder that contains package.json
 
       - name: Export static site
-        run: npm run export
-        working-directory: .        # <-- change to the folder that contains package.json
+        # Use npx export to avoid requiring an "export" npm script
+        run: npx next export -o out
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out               # <-- ensure this matches your app's export output
+          path: out
 
   deploy:
     needs: build
