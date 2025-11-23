@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export -o out",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "mv out docs && git add docs && git commit -m 'Publish static export' && git push"
   },
   "keywords": [],
   "author": "",

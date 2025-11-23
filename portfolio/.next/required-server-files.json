@@ -97,7 +97,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\Zwopi\\Development\\application\\my-portfolio",
+    "outputFileTracingRoot": "C:\\Users\\Zwopi\\Development\\application\\portfolio",
     "experimental": {
       "useSkewCookie": false,
       "nodeMiddleware": false,
@@ -288,10 +288,10 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.js",
     "turbopack": {
-      "root": "C:\\Users\\Zwopi\\Development\\application\\my-portfolio"
+      "root": "C:\\Users\\Zwopi\\Development\\application\\portfolio"
     }
   },
-  "appDir": "C:\\Users\\Zwopi\\Development\\application\\my-portfolio",
+  "appDir": "C:\\Users\\Zwopi\\Development\\application\\portfolio",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",
