@@ -24,13 +24,14 @@ export const translations = {
     email: "Email",
     message: "Message",
     experiences: "Experiences",
+    experiencesPage: "Experiences in Software Development",
     contact: "Contact",
     sendingMessage: "Sending message ...",
-    messageSend: "Send a message",
+    messageSend: "Send Message",
     welcome: "Hello, I'm Dennis Butenko",
     projects: "Projexts",
     summary:
-      "I’m a software developer passionate about building clean, scalable, and user-friendly applications.",
+      "As a software developer, I combine clean, scalable code with a clear focus on user-friendliness – for applications that not only work but also inspire.",
   },
   de: {
     title1: "Fachinformatiker Anwendungsentwicklung in Ausbildung",
@@ -48,13 +49,14 @@ export const translations = {
     email: "E-Mail",
     message: "Nachricht",
     sendingMessage: "Nachricht wird verschickt ...",
-    messageSend: "Schick mir eine Nachricht",
+    messageSend: "Abschicken",
     portfolio: "Mein Portfolio",
     experiences: "Erfahrungen",
+    experiencesPage: "Erfahrungen in der Softwareentwicklung",
     contact: "Kontakt",
     welcome: "Hallo, Ich bin Dennis Butenko",
     projects: "Projekte",
     summary:
-      "Ich bin ein Software Entwickler mit einer Passion sauberen, erweiterbaren und Userfreundlichen Code für Anwendungen zu schreiben.",
+      "Als Softwareentwickler verbinde ich sauberen, skalierbaren Code mit einem klaren Fokus auf Nutzerfreundlichkeit – für Anwendungen, die nicht nur funktionieren, sondern begeistern.",
   },
 };

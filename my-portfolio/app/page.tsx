@@ -23,9 +23,8 @@ export default function HomePage() {
               <CustomChip label="TypeScript" />
               <CustomChip label="C#" />
               <CustomChip label="SQL" />
+              <CustomChip label="Python" /> 
               <CustomChip label="Microsoft D365" />
-              <CustomChip label="Material UI" />
-              <CustomChip label="Fluent UI" />
             </Stack>
           </Box>
         </Stack>

@@ -36,7 +36,7 @@ export default function ExperiencesPage() {
   return (
     <Box>
       <Typography variant="h4" gutterBottom>
-        {t.experiences}
+        {t.experiencesPage}
       </Typography>
 
       <List>
