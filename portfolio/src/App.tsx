@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import { Contact } from "./pages/Contact";
 import { Experiences } from "./pages/Experiences";
@@ -6,7 +6,7 @@ import { Home } from "./pages/Home";
 import { Projects } from "./pages/Projects";
 import { Navbar } from "./components/Navbar";
 import { useLanguage } from "./function/Language";
-import { useThemeMode } from "./function/Theme"; 
+import { useThemeMode } from "./function/Theme";
 import { LanguageType } from "./types/languageTypes";
 
 type Tab = "home" | "projects" | "experiences" | "contact";
@@ -16,6 +16,10 @@ export const App = () => {
   const { t } = useLanguage();
   const [language, setLanguage] = useState<LanguageType>("de");
   const { mode, toggleTheme } = useThemeMode();
+
+  useEffect(() => {
+    toggleTheme();
+  }, []);
 
   const renderTab = () => {
     switch (tab) {
@@ -36,12 +40,14 @@ export const App = () => {
         onToggleThemeAction={toggleTheme}
         mode={mode}
         language={language}
-        onToggleLanguageAction={() => setLanguage(language === "en" ? "de" : "en")}
+        onToggleLanguageAction={() =>
+          setLanguage(language === "en" ? "de" : "en")
+        }
         t={t}
         onNavigate={(s: Tab) => setTab(s)}
         active={tab}
       />
-      <main style={{marginTop: 20}}>{renderTab()}</main>
+      <main style={{ marginTop: 20 }}>{renderTab()}</main>
       <div style={{ marginTop: 2 }}>
         <Footer />
       </div>
