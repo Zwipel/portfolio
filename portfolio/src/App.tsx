@@ -17,10 +17,6 @@ export const App = () => {
   const [language, setLanguage] = useState<LanguageType>("de");
   const { mode, toggleTheme } = useThemeMode();
 
-  useEffect(() => {
-    toggleTheme();
-  }, []);
-
   const renderTab = () => {
     switch (tab) {
       case "projects":

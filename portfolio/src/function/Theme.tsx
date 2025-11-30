@@ -9,7 +9,7 @@ type ThemeContextType = {
 };
 
 const ThemeContext = createContext<ThemeContextType>({
-  mode: "light",
+  mode: "dark",
   toggleTheme: () => {},
   setMode: () => {},
 });
