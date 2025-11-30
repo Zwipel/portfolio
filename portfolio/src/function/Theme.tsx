@@ -15,7 +15,7 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 export const CustomThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [mode, setMode] = useState<DisplayTheme>("light");
+  const [mode, setMode] = useState<DisplayTheme>("dark");
   const toggleTheme = () => setMode((m) => (m === "light" ? "dark" : "light"));
 
   const theme = useMemo(
