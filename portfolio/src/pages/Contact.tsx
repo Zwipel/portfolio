@@ -1,9 +1,9 @@
 import { Box, Typography, Alert, TextField, Button } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useLanguage } from "../function/Language";
 
 export const Contact = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<{
     type: "idle" | "success" | "error";
@@ -21,21 +21,46 @@ export const Contact = () => {
     setStatus({ type: "idle" });
 
     try {
-      const res = await fetch("/api/contact", {
+      // Backend API endpoint - Make sure your backend server is running on port 3001
+      const apiEndpoint = 'http://localhost:3001/api/contact';
+
+      const res = await fetch(apiEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          language: language,
+        }),
       });
 
-      if (!res.ok)
-        throw new Error((await res.json()).error || "Failed to send");
+      if (!res.ok) {
+        let errorMessage = t.sendFailed || "Failed to send message";
+        try {
+          const errorData = await res.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          // If response is not JSON, use default message
+        }
+        throw new Error(errorMessage);
+      }
 
-      setStatus({ type: "success", message: "Message sent — thank you!" });
+      // Get success message from backend response
+      let successMessage = t.messageSent || "Message sent — thank you!";
+      try {
+        const responseData = await res.json();
+        successMessage = responseData.message || successMessage;
+      } catch {
+        // If response is not JSON, use default message
+      }
+
+      setStatus({ type: "success", message: successMessage });
       setForm({ name: "", email: "", message: "" });
     } catch (err: any) {
       setStatus({
         type: "error",
-        message: err.message ?? "Something went wrong",
+        message: err.message ?? (t.somethingWentWrong || "Something went wrong"),
       });
     } finally {
       setLoading(false);
@@ -58,18 +83,18 @@ export const Contact = () => {
       <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
         <TextField
           label={t.name}
-          name={t.name}
+          name="name"
           value={form.name}
-          onChange={handleChange}
+          onChange={(ev) => handleChange(ev)}
           fullWidth
           margin="normal"
           required
         />
         <TextField
           label={t.email}
-          name={t.email}
+          name="email"
           value={form.email}
-          onChange={handleChange}
+          onChange={(ev) => handleChange(ev)}
           fullWidth
           margin="normal"
           type="email"
@@ -77,9 +102,9 @@ export const Contact = () => {
         />
         <TextField
           label={t.message}
-          name={t.message}
+          name="message"
           value={form.message}
-          onChange={handleChange}
+          onChange={(ev) => handleChange(ev)}
           fullWidth
           margin="normal"
           multiline

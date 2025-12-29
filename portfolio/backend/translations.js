@@ -1,11 +1,9 @@
-import { LanguageType } from "../types/languageTypes";
-
-export const languageEnum: Record<LanguageType, LanguageType> = {
+const languageEnum = {
   en: "en",
   de: "de",
 };
 
-export const translations: Record<LanguageType, Record<string, string>> = {
+const translations = {
   en: {
     title1:
       "Computer Science Expert Subject Area: Software Development in training",
@@ -34,9 +32,10 @@ export const translations: Record<LanguageType, Record<string, string>> = {
       "As a software developer, I combine clean, scalable code with a clear focus on user-friendliness – for applications that not only work but also inspire.",
     theme: "Theme",
     language: "Language",
-    sendFailed: "Failed to send message",
-    messageSent: "Message sent — thank you!",
-    somethingWentWrong: "Something went wrong",
+    // API Messages
+    allFieldsRequired: "All fields are required",
+    emailSentSuccess: "Message sent successfully",
+    emailSendFailed: "Failed to send email",
   },
   de: {
     title1: "Fachinformatiker Anwendungsentwicklung in Ausbildung",
@@ -65,8 +64,11 @@ export const translations: Record<LanguageType, Record<string, string>> = {
       "Als Softwareentwickler verbinde ich sauberen, skalierbaren Code mit einem klaren Fokus auf Nutzerfreundlichkeit – für Anwendungen, die nicht nur funktionieren, sondern begeistern.",
     theme: "Thema",
     language: "Sprache",
-    sendFailed: "Nachricht konnte nicht verschickt werden",
-    messageSent: "Nachricht verschickt — vielen Dank!",
-    somethingWentWrong: "Etwas ist schief gelaufen",
+    // API Messages
+    allFieldsRequired: "Alle Felder sind erforderlich",
+    emailSentSuccess: "Nachricht erfolgreich versendet",
+    emailSendFailed: "Fehler beim Versenden der E-Mail",
   },
 };
+
+module.exports = { translations, languageEnum };
