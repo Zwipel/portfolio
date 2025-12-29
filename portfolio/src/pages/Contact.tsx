@@ -26,10 +26,10 @@ export const Contact = () => {
       const templateId = "template_gtzjjhd";
       const publicKey = "twCmkVtPFeCa80Y29";
       const templateParams = {
-        from_name: form.name,
-        from_email: form.email,
+        name: form.name,
+        email: form.email,
         message: form.message,
-        to_email: "buden1998@googlemail.com",
+        time: new Date().toLocaleString(language === 'de' ? 'de-DE' : 'en-US'),
       };
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
