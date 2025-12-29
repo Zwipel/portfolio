@@ -1,6 +1,7 @@
 import { Box, Typography, Alert, TextField, Button } from "@mui/material";
 import { useState } from "react";
 import { useLanguage } from "../function/Language";
+import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
   const { t, language } = useLanguage();
@@ -21,46 +22,28 @@ export const Contact = () => {
     setStatus({ type: "idle" });
 
     try {
-      // Backend API endpoint - Make sure your backend server is running on port 3001
-      const apiEndpoint = 'http://localhost:3001/api/contact';
+      const serviceId = "service_gdca6bc";
+      const templateId = "template_gtzjjhd";
+      const publicKey = "twCmkVtPFeCa80Y29";
+      const templateParams = {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message,
+        to_email: "buden1998@googlemail.com",
+      };
 
-      const res = await fetch(apiEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-          language: language,
-        }),
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setStatus({
+        type: "success",
+        message: t.messageSent || "Message sent — thank you!",
       });
-
-      if (!res.ok) {
-        let errorMessage = t.sendFailed || "Failed to send message";
-        try {
-          const errorData = await res.json();
-          errorMessage = errorData.error || errorMessage;
-        } catch {
-          // If response is not JSON, use default message
-        }
-        throw new Error(errorMessage);
-      }
-
-      // Get success message from backend response
-      let successMessage = t.messageSent || "Message sent — thank you!";
-      try {
-        const responseData = await res.json();
-        successMessage = responseData.message || successMessage;
-      } catch {
-        // If response is not JSON, use default message
-      }
-
-      setStatus({ type: "success", message: successMessage });
       setForm({ name: "", email: "", message: "" });
     } catch (err: any) {
       setStatus({
         type: "error",
-        message: err.message ?? (t.somethingWentWrong || "Something went wrong"),
+        message:
+          err.message ?? (t.somethingWentWrong || "Something went wrong"),
       });
     } finally {
       setLoading(false);
