@@ -8,15 +8,15 @@ export const Home = () => {
 
   return (
     <Box>
-      <Paper elevation={1} sx={{ p: 4 }}>
-        <Stack direction="row" spacing={3} alignItems="center">
-          <Avatar sx={{ width: 200, height: 200, fontSize: 50 }}>DB</Avatar>
+      <Paper elevation={1} sx={{ p: { xs: 2, sm: 4 } }}>
+        <Stack direction={{ xs: "column", sm: "row" }} spacing={3} alignItems={{ xs: "center", sm: "flex-start" }} textAlign={{ xs: "center", sm: "left" }}>
+          <Avatar sx={{ width: { xs: 120, sm: 200 }, height: { xs: 120, sm: 200 }, fontSize: { xs: 30, sm: 50 } }}>DB</Avatar>
           <Box>
-            <Typography variant="h3">Dennis Butenko</Typography>
+            <Typography variant="h3" sx={{ fontSize: { xs: "2rem", sm: "3rem" } }}>Dennis Butenko</Typography>
             <Typography variant="h6" color="text.secondary">
               {t.welcome}
             </Typography>
-            <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
+            <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: "wrap", justifyContent: { xs: "center", sm: "flex-start" } }}>
               <CustomChip label="React" />
               <CustomChip label="JavaScript" />
               <CustomChip label="TypeScript" />
@@ -28,7 +28,7 @@ export const Home = () => {
           </Box>
         </Stack>
 
-        <Typography sx={{ mt: 3, fontSize: 18 }} variant="body1">
+        <Typography sx={{ mt: 3, fontSize: { xs: 16, sm: 18 } }} variant="body1">
           {t.summary}
         </Typography>
       </Paper>

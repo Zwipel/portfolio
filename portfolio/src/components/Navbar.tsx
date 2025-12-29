@@ -1,5 +1,5 @@
-import React from "react";
-import { Brightness4, Brightness7 } from "@mui/icons-material";
+import React, { useState } from "react";
+import { Brightness4, Brightness7, Menu } from "@mui/icons-material";
 import {
   AppBar,
   Toolbar,
@@ -7,6 +7,13 @@ import {
   Stack,
   Button,
   IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { languageEnum } from "../enums/languageEnum";
 import { LanguageType } from "../types/languageTypes";
@@ -35,61 +42,95 @@ export const Navbar = ({
   active = "home",
 }: NavbarProps) => {
   const { toggleLanguage } = useLanguage();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   const handleLanguageToggle = () => {
     toggleLanguage();
     onToggleLanguage();
-  }
+  };
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  const handleNavigate = (tab: Tab) => {
+    onNavigate(tab);
+    setDrawerOpen(false);
+  };
+
+  const navItems = [
+    { key: "home", label: t.home },
+    { key: "experiences", label: t.experiences },
+    { key: "contact", label: t.contact },
+    { key: "projects", label: t.projects },
+  ];
 
   return (
-    <AppBar position="static">
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography
-          variant="h6"
-          onClick={() => onNavigate("home")}
-          sx={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}
-        >
-          {t.portfolio}
-        </Typography>
-
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Button
-            color="inherit"
+    <>
+      <AppBar position="static">
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            variant="h6"
             onClick={() => onNavigate("home")}
-            aria-pressed={active === "home"}
+            sx={{ color: "inherit", textDecoration: "none", cursor: "pointer" }}
           >
-            {t.home}
-          </Button>
-          <Button
-            color="inherit"
-            onClick={() => onNavigate("experiences")}
-            aria-pressed={active === "experiences"}
-          >
-            {t.experiences}
-          </Button>
-          <Button
-            color="inherit"
-            onClick={() => onNavigate("contact")}
-            aria-pressed={active === "contact"}
-          >
-            {t.contact}
-          </Button>
-          <Button
-            color="inherit"
-            onClick={() => onNavigate("projects")}
-            aria-pressed={active === "projects"}
-          >
-            {t.projects}
-          </Button>
+            {t.portfolio}
+          </Typography>
 
-          <IconButton color="inherit" onClick={onToggleTheme}>
-            {mode === "dark" ? <Brightness4 /> : <Brightness7 />}
-          </IconButton>
+          {isMobile ? (
+            <>
+              <IconButton color="inherit" onClick={handleDrawerToggle}>
+                <Menu />
+              </IconButton>
+            </>
+          ) : (
+            <Stack direction="row" spacing={1} alignItems="center">
+              {navItems.map((item) => (
+                <Button
+                  key={item.key}
+                  color="inherit"
+                  onClick={() => onNavigate(item.key as Tab)}
+                  aria-pressed={active === item.key}
+                >
+                  {item.label}
+                </Button>
+              ))}
 
-          <Button color="inherit" onClick={handleLanguageToggle}>
-            {language === languageEnum.de ? "DE" : "EN"}
-          </Button>
-        </Stack>
-      </Toolbar>
-    </AppBar>
+              <IconButton color="inherit" onClick={onToggleTheme}>
+                {mode === "dark" ? <Brightness4 /> : <Brightness7 />}
+              </IconButton>
+
+              <Button color="inherit" onClick={handleLanguageToggle}>
+                {language === languageEnum.de ? "DE" : "EN"}
+              </Button>
+            </Stack>
+          )}
+        </Toolbar>
+      </AppBar>
+
+      <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerToggle}>
+        <List sx={{ width: 250 }}>
+          {navItems.map((item) => (
+            <ListItem key={item.key} disablePadding>
+              <ListItemButton onClick={() => handleNavigate(item.key as Tab)}>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+          <ListItem disablePadding>
+            <ListItemButton onClick={onToggleTheme}>
+              <ListItemText primary={mode === "dark" ? "Light Mode" : "Dark Mode"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton onClick={handleLanguageToggle}>
+              <ListItemText primary={language === languageEnum.de ? "English" : "Deutsch"} />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Drawer>
+    </>
   );
 };

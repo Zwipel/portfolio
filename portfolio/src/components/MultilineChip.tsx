@@ -15,7 +15,7 @@ export const MultiChip = ({
           display: "block",
           whiteSpace: "normal",
         },
-        fontSize: 20,
+        fontSize: { xs: 16, sm: 20 },
         borderWidth: 3,
       }}
       variant="outlined"

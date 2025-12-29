@@ -8,8 +8,8 @@ export const Projects = () => {
   const { t } = useLanguage();
 
   return (
-    <Grid container spacing={5}>
-      <Grid size={3}>
+    <Grid container spacing={2}>
+      <Grid size={{ xs: 12, sm: 6, md: 3 }}>
         <Box>
           <Stack
             sx={{
@@ -39,13 +39,13 @@ export const Projects = () => {
           </Stack>
         </Box>
       </Grid>
-      <Grid size={3}>
+      <Grid size={{ xs: 12, sm: 6, md: 3 }}>
         <Box> </Box>
       </Grid>
-      <Grid size={3}>
+      <Grid size={{ xs: 12, sm: 6, md: 3 }}>
         <Box> </Box>
       </Grid>
-      <Grid size={3}>
+      <Grid size={{ xs: 12, sm: 6, md: 3 }}>
         <Box> </Box>
       </Grid>
       <Grid size={3}>
