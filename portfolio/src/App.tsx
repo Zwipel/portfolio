@@ -34,7 +34,7 @@ export const App = () => {
     <div style={{ padding: 20, fontFamily: "system-ui, sans-serif" }}>
       <Navbar
         onToggleThemeAction={toggleTheme}
-        mode={mode}
+        mode={mode ?? "dark"}
         language={language}
         onToggleLanguageAction={() =>
           setLanguage(language === "en" ? "de" : "en")
