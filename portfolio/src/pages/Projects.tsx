@@ -228,7 +228,7 @@ export const Projects = () => {
                   component="img"
                   height="194"
                   image="/Portfolio.png"
-                  alt={t["IT Bedrohung"]}
+                  alt={t["Portfolio Webseite"]}
                   onClick={() => {
                     setSelectedImage("/Portfolio.png");
                     setOpen(true);
