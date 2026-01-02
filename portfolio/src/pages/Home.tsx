@@ -10,7 +10,7 @@ export const Home = () => {
     <Box>
       <Paper elevation={1} sx={{ p: { xs: 2, sm: 4 } }}>
         <Stack direction={{ xs: "column", sm: "row" }} spacing={3} alignItems={{ xs: "center", sm: "flex-start" }} textAlign={{ xs: "center", sm: "left" }}>
-          <Avatar sx={{ width: { xs: 120, sm: 200 }, height: { xs: 120, sm: 200 }, fontSize: { xs: 30, sm: 50 } }}>DB</Avatar>
+          <Avatar src="/pic.jpg" sx={{ width: { xs: 120, sm: 200 }, height: { xs: 120, sm: 200 }, fontSize: { xs: 30, sm: 50 } } }>DB</Avatar>
           <Box>
             <Typography variant="h3" sx={{ fontSize: { xs: "2rem", sm: "3rem" } }}>Dennis Butenko</Typography>
             <Typography variant="h6" color="text.secondary">

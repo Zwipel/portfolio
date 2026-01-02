@@ -53,7 +53,7 @@ export const translations: Record<LanguageType, Record<string, string>> = {
       "Implementation von Anwendungen in Microsoft Dynamics, mithilfe von React, TypeScript, JavaScript, C# und Fluent UI.\nImplementation von Branchen Standards und Beihilfe zur verbesserten Arbeitsstrucktur.\nWorkshops für Power Apps Component Frameworks.",
     title2: "Werkstudent Softwareentwicklung",
     company2: "Valuedesk GmbH",
-    date2: "2019-2024",
+    date2: "2021-2024",
     bullets2:
       "Erweiterung bestehender Softwarelösungen, mithilfe von React, TypeScript und Material UI\nImplementation von kleinen Lösungen.\nTesting und Bug Behebungen.",
     home: "Start",
