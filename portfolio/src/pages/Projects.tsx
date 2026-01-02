@@ -221,7 +221,7 @@ export const Projects = () => {
                   icon={<RocketLaunch />}
                   label={t["Portfolio Webseite"]}
                   clickable
-                  onClick={() => console.log("Hier könnte Code stehen")}
+                  onClick={() => window.open('https://github.com/Zwipel/portfolio', '_blank')}
                 />
                 <div style={{ display: "block", height: 20 }} />
                 <CardMedia
