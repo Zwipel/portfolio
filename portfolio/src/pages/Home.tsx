@@ -16,7 +16,7 @@ export const Home = () => {
             <Typography variant="h6" color="text.secondary">
               {t.welcome}
             </Typography>
-            <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: "wrap", justifyContent: { xs: "center", sm: "flex-start" } }}>
+            <Stack direction="row" spacing={1} sx={{ mt: 1, mb: 2, flexWrap: "wrap", justifyContent: { xs: "center", sm: "flex-start" } }}>
               <CustomChip label="React" />
               <CustomChip label="JavaScript" />
               <CustomChip label="TypeScript" />
