@@ -20,8 +20,8 @@ export const App = () => {
 
   const renderTab = () => {
     switch (tab) {
-      case "projects":
-        return <Projects />;
+      //case "projects": Hide for now, need rework
+        //return <Projects />;
       case "experiences":
         return <Experiences />;
       case "contact":
