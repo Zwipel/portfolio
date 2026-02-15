@@ -64,7 +64,7 @@ export const Navbar = ({
     { key: "home", label: t.home },
     { key: "experiences", label: t.experiences },
     { key: "contact", label: t.contact },
-    { key: "projects", label: t.projects },
+  //  { key: "projects", label: t.projects }, Needs work to be published, so hide for now
   ];
 
   return (
